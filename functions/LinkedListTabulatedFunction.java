@@ -469,6 +469,7 @@ public class LinkedListTabulatedFunction implements TabulatedFunction, Externali
         return false;
     }
 
+
     public int hashCode() {
         int Hash = size * 31;
         FunctionNode current = this.head.getNext();

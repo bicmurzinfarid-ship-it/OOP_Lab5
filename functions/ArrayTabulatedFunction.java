@@ -235,7 +235,6 @@ public class ArrayTabulatedFunction implements TabulatedFunction,Externalizable,
                         Math.abs(this.getPointY(i) - that.getPointY(i)) > EPSILON) {
                     return false;
                 }
-                i++;
             }
             return true;
         }

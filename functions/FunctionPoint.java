@@ -53,7 +53,7 @@ public class FunctionPoint implements Cloneable, Serializable {
         int YHigh = (int)(Y >>> 32);
         int YLow = (int)Y;
 
-        return XHigh ^ XLow ^ YHigh ^ YLow;
+        return ((29*XHigh) ^ (29*XLow) ^ (31*YHigh) ^ (31*YLow));
     }
 
 
