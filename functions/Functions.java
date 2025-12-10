@@ -28,4 +28,27 @@ public class Functions {
     public static Function composition(Function f1, Function f2){
         return new Composition(f1,f2);
     }
+    public static double integral(Function f, double left, double right, double step) {
+        if (f.getLeftDomainBorder() > left || f.getRightDomainBorder() < right) {
+            throw new IllegalArgumentException("incorrect integration boundaries");
+        }
+        double resultValue = 0.0;
+        double currentLeft = left;
+
+        while (currentLeft + step < right) {
+            double fLeft = f.getFunctionValue(currentLeft);
+            double fRight = f.getFunctionValue(currentLeft + step);
+            resultValue += (fLeft + fRight) / 2.0 * step;  // верная формула трапеции
+            currentLeft += step;
+        }
+
+        // Последний неполный отрезок
+        if (currentLeft < right) {
+            double fLeft = f.getFunctionValue(currentLeft);
+            double fRight = f.getFunctionValue(right);
+            resultValue += (fLeft + fRight) / 2.0 * (right - currentLeft);
+        }
+
+        return resultValue;
+    }
 }
